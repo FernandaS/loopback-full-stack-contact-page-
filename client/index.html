@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ContactManager">
+ <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Contact Manager</title>
+    <!-- Bootstrap -->
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+     <!-- css link -->
+     <link href="css/styles.css" rel="stylesheet">
+
+</head>
+   <body>
+
+      <!-- container -->
+    <div class="container" ng-view="">
+
+
+
+    </div>
+    <!-- end container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Angular Library -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <!-- App Libraries -->
+    <script src="js/services/lb-services.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/ContactsController.js"></script>
+    <script src="js/controllers/ContactsEditController.js"></script>
+    <script src="js/controllers/SearchResultsController.js"></script>
+
+ </body>
+</html>

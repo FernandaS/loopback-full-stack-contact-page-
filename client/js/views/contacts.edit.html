@@ -1,0 +1,22 @@
+
+<form action="" name="myForm"  class="css-form" role="form" novalidate ng-submit="editContact(contact)">
+    <legend>Edit Contact {{ contact.firstName }} </legend>
+
+    <div class="form-group col-md-6">
+        <label for=""></label>
+        <input type="text" class="form-control" value="{{ contact.firstName }}" id="" placeholder= '' ng-model='contact.firstName' required>
+        <br />
+        <input type="text" class="form-control" name="" id="" placeholder="Last Name" ng-model='contact.lastName'>
+        <br />
+        <input type="text" class="form-control" name="email" id="email" placeholder="Email" ng-model='contact.email'>
+        <br />
+        <input type="text" class="form-control" name="" id="" placeholder="Phone" ng-model='contact.phone'>
+        <br />
+
+        <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" >Submit Changes</button>
+    </div>
+
+
+
+
+</form>
