@@ -23,10 +23,46 @@ app.config(function ($routeProvider) {
             templateUrl: 'js/views/search.results.html',
             controller: 'SearchResultsController'
         })
+        .when('/login',{
+            templateUrl: "js/views/user.auth.html"
+        })
         .otherwise({
             redirectTo: '/contacts'
         });
 
+
+});
+
+app.config(function($httpProvider){
+    $httpProvider.interceptors.push(function($q, $location){
+        return {
+            responseError: function(rejection){
+                if (rejection.status === 401){
+
+                    // Same as the conditional statement below
+                    $location.nextAfterLogin = ($location.path() !== "/login") ? $location.path() : null;
+
+                    // Same as the conditional statement above
+//                    if ($location.path() !== "/login") {
+//                        $location.nextAfterLogin = $location.path();
+//                    } else {
+//                        $location.nextAfterLogin = null;
+//                    }
+
+                    console.log($location.nextAfterLogin);
+                    console.log("Sending user to login...");
+                    $location.path('/login');
+                }
+                return $q.reject(rejection);
+            }
+        }
+    });
+});
+
+app.run(function($rootScope, AppUser) {
+
+    // Get current user on app load
+    $rootScope.currentUser = AppUser.getCurrent();
 });
 
 

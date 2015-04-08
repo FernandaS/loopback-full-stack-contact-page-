@@ -8,6 +8,7 @@
   "dependencies": {
     "compression": "^1.0.3",
     "errorhandler": "^1.1.1",
+    "lb-connector-mandrill": "0.0.3",
     "loopback": "^2.0.0",
     "loopback-boot": "^2.0.0",
     "loopback-connector-mongodb": "^1.8.0",
@@ -16,5 +17,10 @@
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"
-  }
+  },
+    "mandrill": {
+    "connector": "lb-connector-mandrill",
+    "apikey": "[uJr8t0ld5KT4F7s4qJp3Tg]"
+    }
+
 }

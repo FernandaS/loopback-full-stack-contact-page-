@@ -8,5 +8,21 @@
     "database": "ContactManager",
     "name": "mongodb",
     "connector": "mongodb"
-  }
+  },
+    "Mandrill": {
+        "name": "Mandrill",
+        "connector": "mail",
+        "transports": [
+            {
+                "type": "SMTP",
+                "host": "smtp.mandrillapp.com",
+                "secure": false,
+                "port": "587",
+                "auth": {
+                    "user": "charles@mytrinitycredit.com",
+                    "pass": "Q1zkqBNCxJR41kzP4NxcNQ"
+                }
+            }
+        ]
+    }
 }

@@ -1,0 +1,109 @@
+
+<!-- form for user login -->
+<div class="wrapper" ng-if="!isResetPassword">
+
+    <!-- reset password success alert -->
+    <center>
+    <div class="alert alert-success" style="width: 50%;" role="alert" ng-if="passwordResetSuccessful">
+        <strong>Password Reset!</strong> Log in with your newly reset password.
+    </div>
+        <div class="alert alert-danger" style="width: 50%;" role="alert" ng-if="loginFailed">
+            <strong>Login Failed!</strong> Invalid username and password. Please try again.
+        </div>
+    </center>
+
+    <form class="form-signin" ng-submit="login()">
+        <h2 class="form-signin-heading">Please login</h2>
+        <input type="text" class="form-control user-input" name="username" placeholder="User Name" required="" autofocus="" ng-model="credentials.username"/>
+        <input type="password" class="form-control user-input" name="password" placeholder="Password" required="" ng-model="credentials.password"/>
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target=".sign-up-form">Sign up</button>
+        <a class="login-link" data-toggle="modal" data-target=".password-reset">Forgot your password?</a>
+    </form>
+</div>
+
+<!-- form for user password reset -->
+<div class="wrapper" ng-if="isResetPassword">
+    <form class="form-signin" ng-submit="resetPassword()">
+        <h2 class="form-signin-heading">Enter new password</h2>
+        <input type="password" class="form-control user-input" name="password1" placeholder="Password" required="" autofocus="" ng-model="credentials.password1"/>
+        <input type="password" class="form-control user-input" name="password2" placeholder="Password" required="" ng-model="credentials.password2"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+</div>
+
+
+<!-- modal for user signup  -->
+<div class="modal fade sign-up-form"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="UserAuthController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Please Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form"  novalidate ng-submit="signUp(user)">
+
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-6">
+                            <input type="username" class="form-control" id="username" placeholder="Username" name='username'ng-model="user.username">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" ng-model="user.email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name='password' ng-model="user.password" required>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Forgot password reset modal-->
+<div class="modal fade password-reset"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="UserAuthController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Password Reset Form </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form"  novalidate>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
+                        </div>
+                        <!--<p ng-show="emailSent">An email has been sent to your inbox. Click on the link to set a new password.</p>-->
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  ng-click="sendPasswordResetEmail()" data-dismiss="modal">Submit </button>
+            </div>
+        </div>
+    </div>
+</div>
